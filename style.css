@@ -1,0 +1,14 @@
+#pixelContainer {
+    display: grid;
+    height: 800px;
+    width: 800px;
+}
+
+.pxl {
+    border: 1px solid black;
+    transition-duration: 0.3s;  
+}
+
+.hovered {
+    background-color: blueviolet;
+}
