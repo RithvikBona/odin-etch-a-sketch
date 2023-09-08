@@ -2,6 +2,7 @@ const slider = document.querySelector('#slider');
 const sliderText = document.querySelector('.sliderText');
 const pxCont = document.getElementById('pixelContainer');
 let isMouseDown = false;
+let isEraser = 
 
 function createGrid(num) {
     pxCont.replaceChildren();
@@ -34,5 +35,8 @@ slider.addEventListener('input', (e) => {
     createGrid(sliderVal);
 });
 
-
+const eraserBtn = document.querySelector('#eraserBtn');
+eraserBtn.addEventListener('click', (e) => {
+    
+});
 

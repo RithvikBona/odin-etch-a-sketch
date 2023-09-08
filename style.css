@@ -38,3 +38,8 @@
     width: 800px;
     height: 25px;
 }
+
+#centerModule {
+    display:flex;
+    justify-content: flex-start;
+}
