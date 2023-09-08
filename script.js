@@ -1,7 +1,10 @@
+const slider = document.querySelector('#slider');
+const sliderText = document.querySelector('.sliderText');
 const pxCont = document.getElementById('pixelContainer');
 let isMouseDown = false;
 
 function createGrid(num) {
+    pxCont.replaceChildren();
     pxCont.style.gridTemplateColumns = `repeat(${num}, 1fr)`;
     pxCont.style.gridTemplateRows = `repeat(${num}, 1fr)`;
 
@@ -24,6 +27,12 @@ function createGrid(num) {
 }
 
 createGrid(16);
+
+slider.addEventListener('input', (e) => {
+    let sliderVal = document.getElementById('slider').value
+    sliderText.textContent = `${sliderVal} X ${sliderVal}`;
+    createGrid(sliderVal);
+});
 
 
 

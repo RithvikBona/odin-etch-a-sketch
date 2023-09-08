@@ -6,9 +6,35 @@
 
 .pxl {
     border: 1px solid black;
-    transition-duration: 0.3s;  
+    transition-duration: 0.1s;  
 }
 
 .hovered {
     background-color: blueviolet;
+}
+
+#page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+#title {
+    font-size: 48px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+/* The Box Size Slider Stuff */
+
+.slidecontainer {
+    width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#slider {
+    width: 800px;
+    height: 25px;
 }
