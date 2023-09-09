@@ -2,7 +2,7 @@ const slider = document.querySelector('#slider');
 const sliderText = document.querySelector('.sliderText');
 const pxCont = document.getElementById('pixelContainer');
 let isMouseDown = false;
-let isEraser = 
+let isEraser =  false;
 
 function createGrid(num) {
     pxCont.replaceChildren();
@@ -20,7 +20,12 @@ function createGrid(num) {
 
         pxl.onmouseover = function () {
             if (isMouseDown) {
-                pxl.classList.add('hovered');
+                if(isEraser) {
+                    pxl.classList.remove('hovered');
+                } else {
+                    pxl.classList.add('hovered');
+                }
+                
             }
         }
         pxCont.appendChild(pxl);
@@ -35,8 +40,9 @@ slider.addEventListener('input', (e) => {
     createGrid(sliderVal);
 });
 
-const eraserBtn = document.querySelector('#eraserBtn');
+const eraserBtn = document.querySelector('.eraserBtn');
 eraserBtn.addEventListener('click', (e) => {
-    
+    isEraser = !isEraser;
+    eraserBtn.classList.toggle("btnPressed")
 });
 

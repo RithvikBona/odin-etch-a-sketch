@@ -43,3 +43,11 @@
     display:flex;
     justify-content: flex-start;
 }
+
+.eraserBtn {
+    background-color: red;
+}
+
+.btnPressed {
+    background-color: green;
+}
