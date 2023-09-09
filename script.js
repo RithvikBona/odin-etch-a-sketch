@@ -12,7 +12,6 @@ function createGrid(num) {
     for (let i = 0; i < num * num; i++) {
         const pxl = document.createElement("div");
         pxl.classList.add('pxl');
-        //pxl.textContent = `${i}`;
         pxl.onmousedown = function () { isMouseDown = true };
         pxl.onmouseup = function () { isMouseDown = false };
 
@@ -44,5 +43,10 @@ const eraserBtn = document.querySelector('.eraserBtn');
 eraserBtn.addEventListener('click', (e) => {
     isEraser = !isEraser;
     eraserBtn.classList.toggle("btnPressed")
+});
+
+const clearBtn = document.querySelector(".clearBtn");
+clearBtn.addEventListener('click', (e) => {
+    createGrid(slider.value);
 });
 
