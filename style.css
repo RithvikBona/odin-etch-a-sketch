@@ -8,10 +8,10 @@
     border: 1px solid black;
     transition-duration: 0.1s;  
 }
-
+/*
 .hovered {
     background-color: blueviolet;
-}
+}*/
 
 #page {
     display: flex;
@@ -48,6 +48,16 @@
     background-color: red;
 }
 
+.rainbowBtn {
+    background-color: red;
+}
+
 .btnPressed {
     background-color: green;
+}
+
+#leftSide {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
