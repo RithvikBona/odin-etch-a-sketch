@@ -9,6 +9,11 @@
     transition-duration: 0.1s;  
     background-color: white;
 }
+
+.pxlBorderHide {
+    border: none;
+}
+
 /*
 .hovered {
     background-color: blueviolet;
@@ -50,6 +55,14 @@
 }
 
 .rainbowBtn {
+    background-color: red;
+}
+
+.darkenBtn {
+    background-color: red;
+}
+
+.lightenBtn {
     background-color: red;
 }
 

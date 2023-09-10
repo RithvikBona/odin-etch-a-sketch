@@ -9,6 +9,7 @@ let isEraser = false;
 let isRainbow = false;
 let isDarken = false;
 let isLighten = false;
+let isGridLines = true;
 
 function createGrid(num) {
     pxCont.replaceChildren();
@@ -18,6 +19,9 @@ function createGrid(num) {
     for (let i = 0; i < num * num; i++) {
         const pxl = document.createElement("div");
         pxl.classList.add('pxl');
+        if(!isGridLines) {
+            pxl.classList.add('pxlBorderHide');
+        }
         //pxl.setAttribute('id', `pxl${i}`);
         pxl.onmousedown = function () { isMouseDown = true };
         pxl.onmouseup = function () { isMouseDown = false };
@@ -116,6 +120,17 @@ eraserBtn.addEventListener('click', (e) => {
 const clearBtn = document.querySelector(".clearBtn");
 clearBtn.addEventListener('click', (e) => {
     createGrid(slider.value);
+});
+
+const toggleGridBtn = document.querySelector('.toggleGrid');
+toggleGridBtn.addEventListener('click', (e) => {
+    isGridLines = !isGridLines;
+    toggleGridBtn.classList.toggle("btnPressed");
+    let pxlList = document.getElementsByClassName("pxl");
+    for (let index = 0; index < pxlList.length; index++) {
+        pxlList[index].classList.toggle('pxlBorderHide');
+        
+    }
 });
 
 colorPicker.addEventListener('input', (e) => {
