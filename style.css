@@ -7,6 +7,7 @@
 .pxl {
     border: 1px solid black;
     transition-duration: 0.1s;  
+    background-color: white;
 }
 /*
 .hovered {
