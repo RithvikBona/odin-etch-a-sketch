@@ -8,6 +8,7 @@ let isMouseDown = false;
 let isEraser = false;
 let isRainbow = false;
 let isDarken = false;
+let isLighten = false;
 
 function createGrid(num) {
     pxCont.replaceChildren();
@@ -31,9 +32,11 @@ function createGrid(num) {
                     let RGBVals = getRandomColor();
                     pxl.style.backgroundColor = `rgb(${RGBVals.join(',')})`
                 } else if (isDarken) {
-                    
                     let rgbNums = pxl.style.backgroundColor.substring(4, pxl.style.backgroundColor.length - 1);
                     pxl.style.backgroundColor = darken(rgbNums);
+                } else if (isLighten) {
+                    let rgbNums = pxl.style.backgroundColor.substring(4, pxl.style.backgroundColor.length - 1);
+                    pxl.style.backgroundColor = lighten(rgbNums);
                 } else {
                     pxl.style.backgroundColor = penColor;
                 }
@@ -55,6 +58,20 @@ function darken(rgbNums) {
     let r = (rInit > 17) ? (rInit - 17) : 0;
     let g = (gInit > 17) ? (gInit - 17) : 0;
     let b = (bInit > 17) ? (bInit - 17) : 0;
+
+    return `rgb(${r},${g},${b})`;
+}
+
+function lighten(rgbNums) {
+    let rgbArr = (rgbNums != "") ? (rgbNums.split(',')) : ["255", "255", "255"];
+    let rInit = rgbArr[0].trim();
+    let gInit = rgbArr[1].trim();
+    let bInit = rgbArr[2].trim();
+
+    //increase rgb vals by 17 each time, or set to 255 if it goes past
+    let r = (rInit < 238) ? (rInit * 1 + 17) : 255;
+    let g = (gInit < 238) ? (gInit * 1 + 17) : 255;
+    let b = (bInit < 238) ? (bInit * 1 + 17) : 255;
 
     return `rgb(${r},${g},${b})`;
 }
@@ -92,6 +109,8 @@ eraserBtn.addEventListener('click', (e) => {
     rainbowBtn.classList.remove("btnPressed");
     isDarken = false;
     darkenBtn.classList.remove("btnPressed");
+    isLighten = false;
+    lightenBtn.classList.remove('btnPressed');
 });
 
 const clearBtn = document.querySelector(".clearBtn");
@@ -112,6 +131,8 @@ rainbowBtn.addEventListener('click', (e) => {
     eraserBtn.classList.remove("btnPressed");
     isDarken = false;
     darkenBtn.classList.remove("btnPressed");
+    isLighten = false;
+    lightenBtn.classList.remove('btnPressed');
 });
 
 const darkenBtn = document.querySelector(".darkenBtn");
@@ -123,6 +144,21 @@ darkenBtn.addEventListener('click', (e) => {
     eraserBtn.classList.remove("btnPressed");
     isRainbow = false;
     rainbowBtn.classList.remove("btnPressed");
+    isLighten = false;
+    lightenBtn.classList.remove('btnPressed');
+});
+
+const lightenBtn = document.querySelector(".lightenBtn");
+lightenBtn.addEventListener('click', (e) => {
+    isLighten = !isLighten;
+    lightenBtn.classList.toggle('btnPressed');
+    //
+    isEraser = false;
+    eraserBtn.classList.remove("btnPressed");
+    isRainbow = false;
+    rainbowBtn.classList.remove("btnPressed");
+    isDarken = false;
+    darkenBtn.classList.remove("btnPressed");
 });
 
 
