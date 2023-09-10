@@ -27,7 +27,7 @@ function createGrid(num) {
                     pxl.style.backgroundColor = 'white';
                 } else if(isRainbow){
                     let RGBVals = getRandomColor();
-                    pxl.style.backgroundColor = `#${RGBVals.r}${RGBVals.g}${RGBVals.b}`;
+                    pxl.style.backgroundColor = `rgb(${RGBVals.join(',')})`
                 } else {
                     pxl.style.backgroundColor = penColor;
                 }
@@ -45,8 +45,7 @@ function getRandomColor() {
     goldenRatioConst = 0.618033988749895;
     h += goldenRatioConst; //continously add golden Ratio Constant which makes even spacing
     h %= 1; //so decimal between 0 and 1
-    //let h = Math.random();
-    return HSVtoRGB(h, 0.96, 0.92);
+    return hslToRgb(h, 0.8, 0.5);
 }
 
 
@@ -92,28 +91,28 @@ rainbowBtn.addEventListener('click', (e) => {
 
 
 
-//Credit to Stack Overflow User Parthik Gosar
-function HSVtoRGB(h, s, v) {
-    var r, g, b, i, f, p, q, t;
-    if (arguments.length === 1) {
-        s = h.s, v = h.v, h = h.h;
+//HSL Converter Credit to StackOverflow User Mohsen
+//https://stackoverflow.com/questions/2353211/hsl-to-rgb-color-conversion
+function hslToRgb(h, s, l) {
+    let r, g, b;
+  
+    if (s === 0) {
+      r = g = b = l; // achromatic
+    } else {
+      const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+      const p = 2 * l - q;
+      r = hueToRgb(p, q, h + 1.0/3.0);
+      g = hueToRgb(p, q, h);
+      b = hueToRgb(p, q, h - 1.0/3.0);
     }
-    i = Math.floor(h * 6);
-    f = h * 6 - i;
-    p = v * (1 - s);
-    q = v * (1 - f * s);
-    t = v * (1 - (1 - f) * s);
-    switch (i % 6) {
-        case 0: r = v, g = t, b = p; break;
-        case 1: r = q, g = v, b = p; break;
-        case 2: r = p, g = v, b = t; break;
-        case 3: r = p, g = q, b = v; break;
-        case 4: r = t, g = p, b = v; break;
-        case 5: r = v, g = p, b = q; break;
-    }
-    return {
-        r: Math.round(r * 255),
-        g: Math.round(g * 255),
-        b: Math.round(b * 255)
-    };
-}
+  
+    return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
+  }  
+  function hueToRgb(p, q, t) {
+    if (t < 0) t += 1;
+    if (t > 1) t -= 1;
+    if (t < 1.0/6.0) return p + (q - p) * 6 * t;
+    if (t < 1.0/2.0) return q;
+    if (t < 2.0/3.0) return p + (q - p) * (2.0/3.0 - t) * 6;
+    return p;
+  }
