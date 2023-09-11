@@ -19,10 +19,9 @@ function createGrid(num) {
     for (let i = 0; i < num * num; i++) {
         const pxl = document.createElement("div");
         pxl.classList.add('pxl');
-        if(!isGridLines) {
+        if (!isGridLines) {
             pxl.classList.add('pxlBorderHide');
         }
-        //pxl.setAttribute('id', `pxl${i}`);
         pxl.onmousedown = function () { isMouseDown = true };
         pxl.onmouseup = function () { isMouseDown = false };
 
@@ -129,7 +128,7 @@ toggleGridBtn.addEventListener('click', (e) => {
     let pxlList = document.getElementsByClassName("pxl");
     for (let index = 0; index < pxlList.length; index++) {
         pxlList[index].classList.toggle('pxlBorderHide');
-        
+
     }
 });
 
