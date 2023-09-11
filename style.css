@@ -1,7 +1,7 @@
 #pixelContainer {
     display: grid;
-    height: 800px;
-    width: 800px;
+    height: 700px;
+    width: 700px;
 }
 
 .pxl {
@@ -34,14 +34,14 @@
 /* The Box Size Slider Stuff */
 
 .slidecontainer {
-    width: 800px;
+    width: 700px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 #slider {
-    width: 800px;
+    width: 700px;
     height: 25px;
 }
 
@@ -74,5 +74,35 @@
 #leftSide {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 20px;
 }
+
+#rightSide {
+    display:flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+button {
+    padding: 15px;
+    border-radius: 10px;
+}
+
+#colorPicker {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 100px;
+    height: 100px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  #colorPicker::-webkit-color-swatch {
+    border-radius: 15px;
+    border: none;
+  }
+  #colorPicker::-moz-color-swatch {
+    border-radius: 15px;
+    border: none;
+  }
